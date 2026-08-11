@@ -1,3 +1,5 @@
 /mnist-dataset.zip
 /data/mnist-dataset.zip
 /.DS_Store
+/data/FashionMNIST/raw
+/notebooks/.DS_Store
