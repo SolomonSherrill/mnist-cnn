@@ -3,3 +3,4 @@
 /.DS_Store
 /data/FashionMNIST/raw
 /notebooks/.DS_Store
+/notebooks/model_weights.pth
