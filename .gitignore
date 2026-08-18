@@ -6,3 +6,7 @@
 /notebooks/model_weights.pth
 /data/MNIST/raw
 /notebooks/data/MNIST/raw
+/.gradio
+/cnn_weights.pt
+/data/.DS_Store
+/data/MNIST/.DS_Store
