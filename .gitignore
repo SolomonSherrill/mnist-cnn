@@ -10,3 +10,4 @@
 /cnn_weights.pt
 /data/.DS_Store
 /data/MNIST/.DS_Store
+/src/__pycache__

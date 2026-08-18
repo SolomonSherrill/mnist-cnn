@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>MNIST CNN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<main class="shell">
+  <header class="masthead">
+    <p class="eyebrow">Convolutional network &middot; 28&times;28 grayscale</p>
+    <h1>Handwritten digit recognition</h1>
+    <p class="lede">Draw a single digit. The stroke is centered, scaled to a 20&nbsp;pixel box and classified on every frame.</p>
+  </header>
+
+  <div class="workbench">
+    <section class="stage">
+      <div class="canvas-frame">
+        <canvas id="pad" width="400" height="400" aria-label="Drawing surface"></canvas>
+        <p class="hint" id="hint">Draw here</p>
+      </div>
+      <div class="stage-foot">
+        <button type="button" id="clear" class="btn-ghost">Clear</button>
+        <span class="latency" id="latency"></span>
+      </div>
+    </section>
+
+    <section class="readout">
+      <div class="verdict">
+        <span class="verdict-label">Prediction</span>
+        <div class="verdict-row">
+          <span class="verdict-digit" id="verdict">&mdash;</span>
+          <span class="verdict-conf" id="verdict-conf">awaiting input</span>
+        </div>
+      </div>
+
+      <div class="chart" id="chart" role="img" aria-label="Class probabilities"></div>
+      <p class="axis-note">Softmax probability across all ten classes</p>
+    </section>
+  </div>
+</main>
+<script src="/app.js"></script>
+</body>
+</html>
