@@ -1,7 +1,9 @@
+import argparse
+from pathlib import Path
+
 import gradio as gr
 import torch
 from torch import nn
-from tkinter import filedialog as fd
 import numpy as np
 from PIL import Image
 
@@ -26,7 +28,15 @@ class NeuralNetwork(nn.Module):
         logits = self.head(head_input)
         return logits
 
-model_path = fd.askopenfilename(title="Select the model weights")
+_parser = argparse.ArgumentParser(description="MNIST CNN demo")
+_parser.add_argument(
+    "--weights",
+    type=Path,
+    default=Path(__file__).resolve().parent.parent / "cnn_weights.pt",
+    help="path to the model weights",
+)
+model_path = _parser.parse_args().weights
+
 model = NeuralNetwork()
 model.load_state_dict(torch.load(model_path,map_location = "cpu"))
 
@@ -90,9 +100,7 @@ import io
 import socket
 import threading
 import time
-import tkinter
 import webbrowser
-from pathlib import Path
 
 import anyio
 import uvicorn
@@ -104,14 +112,6 @@ STATIC_DIR = Path(__file__).resolve().parent / "static"
 # 7860 is Gradio's default; staying off it avoids colliding with a stale server.
 PORT = 7864
 URL = f"http://127.0.0.1:{PORT}"
-
-# askopenfilename leaves a hidden Tk root behind. uvicorn then blocks the main
-# thread forever, so that window never pumps its event loop and macOS paints it
-# as an unresponsive app.
-if getattr(tkinter, "_default_root", None) is not None:
-    tkinter._default_root.destroy()
-    tkinter._default_root = None
-
 
 def decode_canvas(png_bytes):
     """Flatten a canvas PNG onto white and hand back a PIL image for preprocess()."""
