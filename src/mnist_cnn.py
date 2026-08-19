@@ -49,7 +49,7 @@ device = torch.accelerator.current_accelerator() if torch.accelerator.is_availab
 model = NeuralNetwork().to(device)
 
 lr = 1e-3
-epochs = 7
+epochs = 5
 optimizer = torch.optim.Adam(model.parameters(),lr = lr)
 loss_function = nn.CrossEntropyLoss()
 
